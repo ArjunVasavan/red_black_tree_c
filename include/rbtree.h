@@ -23,5 +23,9 @@ void search(node** root,int value);
 void find_min(node* root);
 void find_max(node* root);
 
+// TESTING ////////////////////////////
+/* This is for testing bst */
+
+node* bst_insert(node* root, int value );
 
 #endif
