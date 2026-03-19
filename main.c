@@ -21,4 +21,9 @@ int main(int argc, char** argv) {
     find_min(root);
     find_max(root);
 
+      // print the tree
+    printf("%d\n", root->data);                    // print root first
+    print_tree_lines(root->left_pointer,  "", 1);  // left subtree
+    print_tree_lines(root->right_pointer, "", 0);  // right subtree
+
 }
