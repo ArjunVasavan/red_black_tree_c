@@ -1,4 +1,5 @@
 #include "include/rbtree.h"
+#include <stdio.h>
 
 int main(int argc, char** argv) {
 
@@ -6,14 +7,17 @@ int main(int argc, char** argv) {
 
     int n;
 
+    printf("Enter 5 Elements: ");
     for ( int i = 0 ; i < 5 ; i++ ) {
 
         scanf("%d",&n);
-        bst_insert(root,n);
+        root = bst_insert(root,n);
 
     }
 
-    search(&root,8);
+    printf("Enter what to search: ");
+    scanf("%d",&n);
+    search(&root,n);
     find_min(root);
     find_max(root);
 
