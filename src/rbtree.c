@@ -18,6 +18,8 @@ node* create_node(int value) {
     return new_node;
 }
 
+
+
 void insert(node **root, int value) {
 
     node* new_node = create_node(value);
