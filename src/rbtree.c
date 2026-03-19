@@ -17,3 +17,35 @@ node* create_node(int value) {
 
     return new_node;
 }
+
+void insert(node **root, int value) {
+
+    node* new_node = create_node(value);
+
+    if ( *root == NULL ) {
+        new_node->colour = BLACK;
+        *root = new_node;
+        return;
+    }
+
+    node* par = NULL;
+    node* curr= *root;
+
+    while ( curr != NULL ) {
+        par = curr;
+
+        if ( value < curr->data ) {
+            curr = curr->left_pointer;
+        } else if ( value > curr->data ) {
+            curr = curr->right_pointer;
+        }
+    }
+
+    new_node->parent_pointer = par;
+
+    if ( value < par->data ) {
+        par->left_pointer = new_node;
+    } else {
+        par->right_pointer = new_node;
+    }
+}
