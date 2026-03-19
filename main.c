@@ -8,20 +8,18 @@ int main(int argc, char** argv) {
     int n;
 
     printf("Enter 5 Elements: ");
-    for ( int i = 0 ; i < 5 ; i++ ) {
+    for ( int i = 0 ; i < 3 ; i++ ) {
 
         scanf("%d",&n);
         root = bst_insert(root,n);
 
     }
 
-    printf("Enter what to search: ");
-    scanf("%d",&n);
-    search(&root,n);
-    find_min(root);
-    find_max(root);
+    // printf("Enter what to search: ");
+    // scanf("%d",&n);
+    
 
-      // print the tree
+    // print the tree
     printf("%d\n", root->data);                    // print root first
     print_tree_lines(root->left_pointer,  "", 1);  // left subtree
     print_tree_lines(root->right_pointer, "", 0);  // right subtree

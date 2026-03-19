@@ -27,5 +27,8 @@ void find_max(node* root);
 /* This is for testing bst */
 
 node* bst_insert(node* root, int value );
+void inorder(node* root);
+void print_tree_lines(node* root, char* prefix, int is_left);
+void left_rotate(node** root, node* node_x);
 
 #endif
