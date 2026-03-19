@@ -57,7 +57,7 @@ void fix_insert(node** root, node* new_node ) {
             }
         } else { // bented to right side
 
-            node* uncle_node = grand_node->right_pointer;
+            node* uncle_node = grand_node->left_pointer;
 
             if ( uncle_node != NULL && uncle_node->colour == RED ) {
 
@@ -69,7 +69,7 @@ void fix_insert(node** root, node* new_node ) {
                 
             } else {
 
-                if ( parent_node == grand_node->left_pointer ) { // RL case
+                if ( new_node == parent_node->left_pointer ) { // RL case
 
                     right_rotate(root,parent_node);
                     new_node = parent_node;
