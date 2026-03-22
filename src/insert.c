@@ -1,4 +1,5 @@
 #include "../include/rbtree.h"
+#include <stdio.h>
 
 void fix_insert(node** root, node* new_node ) {
 
@@ -79,6 +80,7 @@ void insert(node **root, int value) {
     if ( *root == NULL ) {
         new_node->colour = BLACK;
         *root = new_node;
+        printf("Inserted: %d\n",value);
         return;
     }
 
@@ -92,6 +94,9 @@ void insert(node **root, int value) {
             curr = curr->left_pointer;
         } else if ( value > curr->data ) {
             curr = curr->right_pointer;
+        } else {
+            printf("Duplicate value cant be inserted\n");
+            return;
         }
     }
 
@@ -104,6 +109,8 @@ void insert(node **root, int value) {
     }
 
     fix_insert(root,new_node);
+
+    printf("Inserted: %d\n",value);
 }
 
 

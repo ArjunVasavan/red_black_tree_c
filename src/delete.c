@@ -171,7 +171,7 @@ void delete_node(node** root, int value ) {
     }
 
     if ( curr == NULL ) {
-        printf("Data Not Found!\n");
+        printf("Delete failed: value %d not found!\n",value);
         return;
     }
 

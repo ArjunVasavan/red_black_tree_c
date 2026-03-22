@@ -32,3 +32,41 @@ void print_menu() {
         printf("Enter your choice:\n");
 
 }
+
+void print_tree(node* root) {
+
+    if ( root == NULL ) {
+        printf("Tree is Empty\n");
+        return;
+    }
+
+    node* queue[1024];
+
+    int front = 0, rear = 0;
+
+    queue[rear++] = root;
+
+    while (front < rear) {
+
+        int level_size = rear - front;
+
+        for ( int i = 0 ; i < level_size ; i++ ) {
+
+            node* curr = queue[front++];
+
+            printf("%d(%s) ",curr->data,curr->colour == RED ? "R" : "B" );
+
+            if (curr->left_pointer != NULL) {
+                queue[rear++] = curr->left_pointer;
+            }
+            if ( curr->right_pointer != NULL ) {
+                queue[rear++] = curr->right_pointer;
+            }
+
+        }
+
+        printf("\n");
+    }
+
+
+}

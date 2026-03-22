@@ -33,5 +33,7 @@ void find_min_wrapper(node* root);
 void find_max_wrapper(node* root);
 void delete_min(node** root);
 void delete_max(node** root);
+void print_tree(node* root);
 
+void inorder(node* root);
 #endif
