@@ -4,24 +4,49 @@
 int main(int argc, char** argv) {
 
     node* root = NULL;
+    char choice;
+    int value;
 
-    int n;
+    do {
 
-    printf("Enter 5 Elements: ");
-    for ( int i = 0 ; i < 3 ; i++ ) {
+        print_menu();
+        scanf("%c",&choice);
 
-        scanf("%d",&n);
-        root = bst_insert(root,n);
+        switch (choice) {
 
-    }
+            case 1:{
 
-    // printf("Enter what to search: ");
-    // scanf("%d",&n);
-    
+                printf("Enter the value: ");
+                scanf("%d",&value);
+                insert(&root,value);
+                break;
+            }
+            case 2:{
 
-    // print the tree
-    printf("%d\n", root->data);                    // print root first
-    print_tree_lines(root->left_pointer,  "", 1);  // left subtree
-    print_tree_lines(root->right_pointer, "", 0);  // right subtree
+                printf("Enter value to delete: ");
+                scanf("%d",&value);
+                delete_node(&root,value);
+                break;
+            }
+            case 3:{
+
+                break;
+            }
+            case 4:{
+
+                break;
+            }
+            case 5:{
+
+                break;
+            }
+            case 6:{
+
+                break;
+            }
+        }
+
+
+    }while (1);
 
 }

@@ -21,15 +21,14 @@ typedef struct node {
 void insert(node** root,int value);
 void search(node** root,int value);
 node* find_min(node* root);
-void find_max(node* root);
+node* find_max(node* root);
+void delete_node(node** root, int value );
+node* create_node(int value);
 
-// TESTING ////////////////////////////
-/* This is for testing bst */
-
-node* bst_insert(node* root, int value );
-void inorder(node* root);
 void print_tree_lines(node* root, char* prefix, int is_left);
 void left_rotate(node** root, node* node_x);
 void right_rotate(node** root, node* node_x);
+
+void print_menu();
 
 #endif
