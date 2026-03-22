@@ -212,5 +212,22 @@ void transplant(node** root, node* u, node* v) {
 
 }
 
+void delete_node(node** root, int value ) {
+
+    // finding node to delete
+
+    node* curr =*root;
+    while (curr != NULL) {
+        if ( value < curr->data ) {
+            curr = curr->left_pointer;
+        } else if ( value > curr->data ) {
+            curr = curr->right_pointer;
+        } else { // founded the value
+            break;
+        }
+    }
+
+}
+
 
 
