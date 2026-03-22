@@ -109,8 +109,26 @@ void fix_delete(node** root, node* replacement, node* replacement_parent) {
                 sibling = replacement_parent->right_pointer;
             }
 
+ // case 2
+            if (  ( sibling->left_pointer == NULL || sibling->left_pointer->colour == BLACK ) && 
+                (sibling->right_pointer == NULL || sibling->right_pointer->colour == BLACK ) ) {
+
+                sibling->colour = RED;
+
+                replacement = replacement_parent;
+                replacement_parent = replacement_parent->parent_pointer;
+
+            } else {
+
+
+
+
+
+
+            }
+
         }
-    
+
     }
 
 
@@ -155,7 +173,7 @@ void search(node** root, int value ) {
     node* curr = *root;
 
     while (curr != NULL ) {
-    
+
         if ( value > curr->data ) {
             curr = curr->right_pointer;
         } else if ( value < curr->data ) {
