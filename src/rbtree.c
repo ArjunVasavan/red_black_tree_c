@@ -101,6 +101,16 @@ void fix_delete(node** root, node* replacement, node* replacement_parent) {
 
             node* sibling = replacement_parent->right_pointer;
 
+            if ( sibling == NULL ) {
+
+                // Sibling is NULL → equivalent to BLACK NIL node.
+                // Cannot fix double-black locally (no sibling to rotate/recolor).
+                // Move the double-black up to parent and continue fixing.
+                replacement = replacement_parent;
+                replacement_parent = replacement_parent->parent_pointer;
+                continue;
+            }
+
             // case 1
             if ( sibling != NULL && sibling->colour == RED ) {
                 sibling->colour = BLACK;
@@ -112,6 +122,7 @@ void fix_delete(node** root, node* replacement, node* replacement_parent) {
             // case 2
             if (  ( sibling->left_pointer == NULL || sibling->left_pointer->colour == BLACK ) && 
                 (sibling->right_pointer == NULL || sibling->right_pointer->colour == BLACK ) ) {
+
 
                 sibling->colour = RED;
 
@@ -145,6 +156,16 @@ void fix_delete(node** root, node* replacement, node* replacement_parent) {
         } else {  // double black is on right side
 
             node* sibling = replacement_parent->left_pointer;
+
+            if ( sibling == NULL ) {
+
+                // Sibling is NULL → equivalent to BLACK NIL node.
+                // Cannot fix double-black locally (no sibling to rotate/recolor).
+                // Move the double-black up to parent and continue fixing.
+                replacement = replacement_parent;
+                replacement_parent = replacement_parent->parent_pointer;
+                continue;
+            }
 
             // case 1
 
