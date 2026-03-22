@@ -20,7 +20,7 @@ typedef struct node {
 
 void insert(node** root,int value);
 void search(node** root,int value);
-void find_min(node* root);
+node* find_min(node* root);
 void find_max(node* root);
 
 // TESTING ////////////////////////////
