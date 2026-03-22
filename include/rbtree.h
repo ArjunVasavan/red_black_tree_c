@@ -25,10 +25,13 @@ node* find_max(node* root);
 void delete_node(node** root, int value );
 node* create_node(int value);
 
-void print_tree_lines(node* root, char* prefix, int is_left);
 void left_rotate(node** root, node* node_x);
 void right_rotate(node** root, node* node_x);
 
 void print_menu();
+void find_min_wrapper(node* root);
+void find_max_wrapper(node* root);
+void delete_min(node** root);
+void delete_max(node** root);
 
 #endif

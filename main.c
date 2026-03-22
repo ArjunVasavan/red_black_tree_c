@@ -1,5 +1,4 @@
 #include "include/rbtree.h"
-#include <stdio.h>
 
 int main(int argc, char** argv) {
 
@@ -28,25 +27,29 @@ int main(int argc, char** argv) {
                 delete_node(&root,value);
                 break;
             }
-            case 3:{
+            case 3:{ // Search
+
 
                 break;
             }
-            case 4:{
+            case 4:{ // Find min 
+                find_min_wrapper(root);
+                break;
+            }
+            case 5:{ // find max
+
+                find_max_wrapper(root);
+                break;
+            }
+            case 6:{ // display tree
 
                 break;
             }
-            case 5:{
-
-                break;
-            }
-            case 6:{
+            case 7:{ //exit
 
                 break;
             }
         }
 
-
     }while (1);
-
 }
