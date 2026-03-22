@@ -1,4 +1,5 @@
 #include "../include/rbtree.h"
+#include <time.h>
 
 node* create_node(int value) {
 
@@ -190,4 +191,26 @@ node* bst_insert(node* root, int value ) {
 
     return root;
 }
+
+void transplant(node** root, node* u, node* v) {
+
+    if ( u ->parent_pointer == NULL ) { // u is root
+
+        *root = v; // now v is root
+
+    } else if ( u == u->parent_pointer->left_pointer ) { // u is left child
+
+        u->parent_pointer->left_pointer = v;
+
+    } else {
+        u->parent_pointer->right_pointer = v;
+    }
+
+    if ( v != NULL ) {
+        v->parent_pointer = u->parent_pointer;
+    }
+
+}
+
+
 
