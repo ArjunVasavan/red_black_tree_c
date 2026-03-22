@@ -68,7 +68,7 @@ void fix_insert(node** root, node* new_node ) {
                 grand_node->colour = RED;
 
                 new_node = grand_node;
-                
+
             } else {
 
                 if ( new_node == parent_node->left_pointer ) { // RL case
@@ -90,7 +90,7 @@ void fix_insert(node** root, node* new_node ) {
     (*root)->colour = BLACK;
 }
 
- // replacement: for act as double black.
+// replacement: for act as double black.
 //  replacement_parent: for acting as double black parent if double black is an NULL
 
 void fix_delete(node** root, node* replacement, node* replacement_parent) {
@@ -109,7 +109,7 @@ void fix_delete(node** root, node* replacement, node* replacement_parent) {
                 sibling = replacement_parent->right_pointer;
             }
 
- // case 2
+            // case 2
             if (  ( sibling->left_pointer == NULL || sibling->left_pointer->colour == BLACK ) && 
                 (sibling->right_pointer == NULL || sibling->right_pointer->colour == BLACK ) ) {
 
@@ -122,6 +122,7 @@ void fix_delete(node** root, node* replacement, node* replacement_parent) {
 
 
                 // case 3 
+                // in case 3 near child colour will be red its colour is replaced
 
                 if ( sibling->right_pointer == NULL || sibling->right_pointer->colour == BLACK ) {
                     sibling->left_pointer->colour = BLACK;
@@ -141,10 +142,61 @@ void fix_delete(node** root, node* replacement, node* replacement_parent) {
 
             }
 
+        } else {  // double black is on right side
+
+            node* sibling = replacement_parent->left_pointer;
+
+            // case 1
+
+            if ( sibling != NULL && sibling->colour == RED ) {
+                sibling->colour = BLACK;
+                replacement_parent->colour = RED;
+                right_rotate(root,replacement_parent);
+                sibling = replacement_parent->left_pointer;
+            }
+
+            // case 2
+            if ( ( sibling->left_pointer == NULL || sibling->left_pointer->colour == BLACK ) && 
+                (sibling->right_pointer == NULL || sibling->right_pointer->colour == BLACK ) ) {
+
+                sibling->colour = RED;
+
+                replacement = replacement_parent;
+                replacement_parent = replacement_parent->parent_pointer;
+
+            } else {
+
+                // case 3
+                // in case 3 near child colour is replaced
+
+                if ( sibling->left_pointer == NULL || sibling->left_pointer->colour == BLACK ) {
+
+                    sibling->right_pointer->colour = BLACK;
+                    sibling->colour = RED;
+                    // rotated opposite to the side of Double black
+
+                    left_rotate(root,sibling);
+
+                    sibling = replacement_parent->left_pointer;
+
+                }
+
+                sibling->colour = replacement_parent->colour;
+                replacement_parent->colour = BLACK;
+
+                sibling->left_pointer->colour = BLACK;
+                right_rotate(root,replacement_parent);
+                replacement = *root;
+
+
+            }
+
         }
+
 
     }
 
+    if ( replacement != NULL ) replacement->colour = BLACK;
 
 }
 
@@ -236,7 +288,7 @@ void find_max(node *root) {
 node* bst_insert(node* root, int value ) {
 
     if ( root == NULL ) {
-        
+
         node* new_node = create_node(value);
         return new_node;
 
@@ -300,7 +352,7 @@ void delete_node(node** root, int value ) {
     node* replacement_parent = NULL; // parent of that double node ( needed when replacement is NULL)
     colour_t original_colour = curr->colour;
 
- // BST deletion there are three situations
+    // BST deletion there are three situations
 
     if ( curr->left_pointer == NULL ) {
         // situation 1: theres no left child for curr
@@ -352,7 +404,7 @@ void delete_node(node** root, int value ) {
     if ( original_colour == BLACK ) {
 
         fix_delete(root,replacement,replacement_parent);
-        
+
     }
 
 }
