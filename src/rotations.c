@@ -34,7 +34,6 @@ void left_rotate(node** root, node* node_x) {
 void right_rotate(node **root, node *node_y) {
 
     node* node_x = node_y->left_pointer;
-
     node_y->left_pointer = node_x->right_pointer;
 
     if ( node_x->right_pointer != NULL ) {

@@ -1,5 +1,4 @@
 #include "../include/rbtree.h"
-#include <stdio.h>
 
 void fix_insert(node** root, node* new_node ) {
 
@@ -25,11 +24,8 @@ void fix_insert(node** root, node* new_node ) {
                 if ( new_node == parent_node->right_pointer ) { // now its on LR fashion
 
                     left_rotate(root,parent_node);
-
-
                     new_node = parent_node;
                     parent_node = new_node->parent_pointer;
-
                 }
                 // case for RR or left over of LRs R rotation
 
@@ -57,7 +53,6 @@ void fix_insert(node** root, node* new_node ) {
                     right_rotate(root,parent_node);
                     new_node = parent_node;
                     parent_node = new_node->parent_pointer;
-
                 }
 
                 grand_node->colour = RED;
@@ -109,7 +104,6 @@ void insert(node **root, int value) {
     }
 
     fix_insert(root,new_node);
-
     printf("Inserted: %d\n",value);
 }
 

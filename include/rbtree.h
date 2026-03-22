@@ -20,8 +20,6 @@ typedef struct node {
 
 void insert(node** root,int value);
 void search(node** root,int value);
-node* find_min(node* root);
-node* find_max(node* root);
 void delete_node(node** root, int value );
 node* create_node(int value);
 
@@ -29,11 +27,13 @@ void left_rotate(node** root, node* node_x);
 void right_rotate(node** root, node* node_x);
 
 void print_menu();
+node* find_min(node* root);
+node* find_max(node* root);
 void find_min_wrapper(node* root);
 void find_max_wrapper(node* root);
 void delete_min(node** root);
 void delete_max(node** root);
 void print_tree(node* root);
-
 void inorder(node* root);
+
 #endif

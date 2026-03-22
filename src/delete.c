@@ -118,17 +118,10 @@ void fix_delete(node** root, node* replacement, node* replacement_parent) {
                 sibling->left_pointer->colour = BLACK;
                 right_rotate(root,replacement_parent);
                 replacement = *root;
-
-
             }
-
         }
-
-
     }
-
     if ( replacement != NULL ) replacement->colour = BLACK;
-
 }
 
 
@@ -138,13 +131,9 @@ void fix_delete(node** root, node* replacement, node* replacement_parent) {
 void transplant(node** root, node* u, node* v) {
 
     if ( u ->parent_pointer == NULL ) { // u is root
-
         *root = v; // now v is root
-
     } else if ( u == u->parent_pointer->left_pointer ) { // u is left child
-
         u->parent_pointer->left_pointer = v;
-
     } else {
         u->parent_pointer->right_pointer = v;
     }
@@ -156,7 +145,6 @@ void transplant(node** root, node* u, node* v) {
 }
 
 void delete_node(node** root, int value ) {
-
     // finding node to delete
 
     node* curr =*root;

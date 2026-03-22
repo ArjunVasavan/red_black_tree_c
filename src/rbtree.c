@@ -1,6 +1,4 @@
 #include "../include/rbtree.h"
-#include <stdio.h>
-#include <time.h>
 
 node* create_node(int value) {
 
@@ -81,8 +79,8 @@ void find_min_wrapper(node* root) {
     node* result;
     result = find_min(root);
     printf("Minimum value in the tree is %d\n",result->data);
-
 }
+
 void find_max_wrapper(node* root) {
     if ( root == NULL ) {
         printf("Tree is Empty\n");
@@ -92,6 +90,7 @@ void find_max_wrapper(node* root) {
     result = find_max(root);
     printf("Maximum value in the tree is %d\n",result->data);
 }
+
 void delete_min(node** root) {
     if ( *root == NULL ) {
         printf("Tree is Empty\n");
@@ -101,6 +100,7 @@ void delete_min(node** root) {
     node* min = find_min(*root);
     delete_node(root,min->data);
 }
+
 void delete_max(node** root) {
     if ( *root == NULL ) {
         printf("Tree is Empty\n");
