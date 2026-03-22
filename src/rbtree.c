@@ -121,9 +121,23 @@ void fix_delete(node** root, node* replacement, node* replacement_parent) {
             } else {
 
 
+                // case 3 
 
+                if ( sibling->right_pointer == NULL || sibling->right_pointer->colour == BLACK ) {
+                    sibling->left_pointer->colour = BLACK;
+                    sibling->colour = RED;
+                    right_rotate(root,sibling);
+                    sibling = replacement_parent->right_pointer;
+                } 
 
+                // case 4
 
+                sibling->colour = replacement_parent->colour;
+                replacement_parent->colour = BLACK;
+                sibling->right_pointer->colour = BLACK;
+                left_rotate(root,replacement_parent);
+
+                replacement = *root; // to close the loop
 
             }
 
