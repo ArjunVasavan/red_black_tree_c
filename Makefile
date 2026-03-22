@@ -2,7 +2,7 @@ CC = gcc
 CFLAGS = -Iinclude
 TARGET = rbt
 
-SRC = $(wildcard src/*.c)
+SRC = $(wildcard src/*.c) main.c
 OBJ = $(SRC:src/%.c=build/%.o)
 
 .PHONY: all clean
